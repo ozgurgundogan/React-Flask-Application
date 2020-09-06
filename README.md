@@ -3,11 +3,8 @@
 .
 ├── api
 ├── files
-├── install.sh
 ├── project_creator.sh
 ├── react-flask-app
-├── runner.sh
-├── test
 ```
 
 #### api
