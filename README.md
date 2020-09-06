@@ -19,7 +19,15 @@ The directory holds all frontend (ReactJS) files.
 ```bash
 git clone https://github.com/ozgurgundogan/COALITION-ASSIGNMENT.git
 cd COALITION-ASSIGNMENT/
+```
+* Ubuntu Installer
+```bash
 sudo sh ubuntu_installer.sh
+```
+
+* MacOs Installer
+```bash
+sudo sh macos_installer.sh
 ```
 
 [You can install step by step by yourself](https://github.com/ozgurgundogan/COALITION-ASSIGNMENT/blob/master/INSTALLER-README.md "")
