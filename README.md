@@ -19,8 +19,10 @@ The directory holds all frontend (ReactJS) files.
 ```bash
 git clone https://github.com/ozgurgundogan/COALITION-ASSIGNMENT.git
 cd COALITION-ASSIGNMENT/
-sudo sh installer.sh
+sudo sh ubuntu_installer.sh
 ```
+
+[You can install step by step by yourself](https://github.com/ozgurgundogan/COALITION-ASSIGNMENT/blob/master/INSTALLER-README.md "")
 
 
 ## How to run ?
