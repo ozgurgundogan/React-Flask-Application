@@ -1,5 +1,5 @@
 import React from "react";
-import "./WhiteListListing.css"
+import "./AgencyWhiteList.css"
 import DataTable from 'react-data-table-component';
 import NavigatorMenu from "../NavigatorMenu/NavigatorMenu";
 
@@ -26,7 +26,7 @@ const columns = [
  *  Agency White Listing class with pagination.
  *
  * */
-class WhiteList extends React.Component {
+class AgencyWhiteList extends React.Component {
 
     state = {
         data: [],
@@ -131,4 +131,4 @@ class WhiteList extends React.Component {
 }
 
 
-export default WhiteList;
+export default AgencyWhiteList;

@@ -67,7 +67,7 @@ const AdminLogin = () => {
           )}
           <fieldset className="border p-3 rounded">
             <legend className="registrationFormLegend border rounded p-1 text-center">
-              Dashboard Login Form
+              Admin Login
             </legend>
             <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
               <div className="form-group">

@@ -1,5 +1,5 @@
 import React  from "react";
-import "./BlacklistBrokerListing.css"
+import "./BrokerBlackList.css"
 import DataTable from 'react-data-table-component';
 import NavigatorMenu from "../NavigatorMenu/NavigatorMenu";
 
@@ -41,7 +41,7 @@ const columns = [
         sortable: true,
         grow: 3
       },{
-        name: "Registered Date",
+        name: "Registration Date",
         selector: "timestamp",
         sortable: true,
         grow: 2
@@ -54,7 +54,7 @@ const columns = [
  *
 * */
 
-class BlacklistBrokerListing extends React.Component{
+class BrokerBlackList extends React.Component{
 
     state = {
         data: [],
@@ -138,7 +138,7 @@ class BlacklistBrokerListing extends React.Component{
                 <div className="Tabling">
                   <div className="card">
                     <DataTable
-                      title="BLACKLISTED BROKER LIST"
+                      title="BROKER BLACK LIST"
                       columns={columns}
                       data={data}
                       progressPending={loading}
@@ -159,4 +159,4 @@ class BlacklistBrokerListing extends React.Component{
 }
 
 
-export default BlacklistBrokerListing;
+export default BrokerBlackList;

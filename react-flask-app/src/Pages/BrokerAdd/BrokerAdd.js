@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "./AddBroker.css";
+import "./BrokerAdd.css";
 // import links for routing
 import {Link} from "react-router-dom";
 // form validation
@@ -11,7 +11,7 @@ import NavigatorMenu from "../NavigatorMenu/NavigatorMenu";
 /**
  *  Broker Adding page. It renders broker registration form and submit the data to backend when submit button is clicked.
  * */
-const AddBroker = () => {
+const BrokerAdd = () => {
     const {register, handleSubmit, errors} = useForm();
     const [message, setMessage] = useState();
 
@@ -62,7 +62,7 @@ const AddBroker = () => {
                 )}
                 <fieldset className="border p-3 rounded">
                     <legend className="registrationFormLegend border rounded p-1 text-center">
-                        Registration Form
+                        Registration
                     </legend>
                     <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
                         <div className="form-group">
@@ -198,37 +198,7 @@ const AddBroker = () => {
                             )}
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="inputForPassword">Password</label>
-                            <span className="mandatory">*</span>
-                            <input
-                                name="password"
-                                type="password"
-                                className="form-control"
-                                id="inputForPassword"
-                                placeholder="Enter password"
-                                ref={register({
-                                    required: {
-                                        value: true,
-                                        message: "Please enter password",
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: "Minimum 6 characters are allowed",
-                                    },
-                                    maxLength: {
-                                        value: 255,
-                                        message: "Maximum 255 characters are allowed",
-                                    },
-                                })}
-                            />
-                            {errors.password && (
-                                <span className="errorMessage mandatory">
-                  {errors.password.message}
-                </span>
-                            )}
 
-                        </div>
                         <div className="d-flex align-items-center justify-content-center">
                             <button type="submit" className="btn btn-outline-primary">
                                 Submit
@@ -244,4 +214,4 @@ const AddBroker = () => {
         </body>
     );
 }
-export default AddBroker;
+export default BrokerAdd;

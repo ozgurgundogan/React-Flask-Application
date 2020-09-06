@@ -8,8 +8,8 @@ Agency Domain WhiteList Table Structure
 """
 class Agency_Domain_WhiteList(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    domain = db.Column(db.String(255), nullable=False, unique=True)
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow())
+    domain = db.Column(db.String(255), index=True, nullable=False, unique=True)
+    timestamp = db.Column(db.DateTime,  default=datetime.utcnow())
 
 """
 Agency Table Structure
@@ -17,23 +17,22 @@ Agency Table Structure
 class Agency(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))
-    domain = db.Column(db.String(255), db.ForeignKey(Agency_Domain_WhiteList.domain))
+    domain = db.Column(db.String(255), index=True)
     address = db.Column(db.String(255), nullable=False, unique=True)
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow())
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow())
 
-""    #from random import uniform
-    #x, y = uniform(-180, 180), uniform(-90, 90)
-    #return x, y"
-Broker Table Structure
 """
+Broker Table Structure 
+"""
+
 class Broker(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     agencyId = db.Column(db.Integer, db.ForeignKey(Agency.id))
     firstname = db.Column(db.String(255), nullable=False)
     lastname = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(255), nullable=False, unique=True)
+    email = db.Column(db.String(255), nullable=False, unique=True, index=True)
     address = db.Column(db.String(255), nullable=False)
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
@@ -44,10 +43,10 @@ BlackListed Broker Table Structure
 """
 class BlackListBrokers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    domain = db.Column(db.String(255), nullable=False)
+    domain = db.Column(db.String(255), nullable=False , index=True)
     firstname = db.Column(db.String(255), nullable=False)
     lastname = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(255), nullable=False, unique=True)
+    email = db.Column(db.String(255), nullable=False, unique=True, index=True)
     address = db.Column(db.String(255), nullable=False)
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)

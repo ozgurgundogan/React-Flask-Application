@@ -1,9 +1,8 @@
 import os,time
 from flask import Flask,url_for,request,jsonify
 from api.config import config
-from api.utils import generate_response,brokerSerializer,whiteListSerializer,agencySerializer,blackListSerializer
+from api.utils import generate_response,brokerSerializer,whiteListSerializer,agencySerializer,blackListSerializer,getGeocoding,getClosestAgency
 from api.csvToDB import loadCsvFilesIntoDatabase
-from api.csvToDB import getGeocoding,getClosestAgency
 from api.models import db,Agency,Agency_Domain_WhiteList,Broker,BlackListBrokers
 
 app = Flask(__name__)
@@ -17,7 +16,9 @@ it creates database and schemas.
 with app.app_context():
     db.create_all()
 
-
+"""
+it loads csv files into database
+"""
 loadCsvFilesIntoDatabase(app)
 
 """
@@ -53,10 +54,14 @@ If there is no even a single agency even though domain name is in whitelist, it 
 """
 @app.route("/add-broker", methods=['POST'])
 def AddBroker():
-
+    print(request)
     firstname = request.json.get("firstname")
     lastname = request.json.get("lastname")
     email = request.json.get("email")
+
+    brokerExists = Broker.query.filter_by(email=email).all()
+    if(len(brokerExists)):
+        return generate_response(400, "This e-mail address is already registered.")
     address = request.json.get("address")
     print(firstname,lastname,email,address)
     lat, lng = getGeocoding(address)
@@ -67,14 +72,14 @@ def AddBroker():
         possibleAgencies = Agency.query.filter_by(domain=email_domain).all()
 
         if(len(possibleAgencies)==0):  # if domain is in white list but no possible agency.
-            db.session.add(Agency(domain=email_domain,address=address,lat=lat,lng=lng))
+            db.session.add(Agency(title=email_domain ,domain=email_domain,address=address,lat=lat,lng=lng))
             db.session.commit()
             newCreatedAgency = Agency.query.filter_by(address=address).first()
             db.session.add(
                 Broker(agencyId=newCreatedAgency.id, firstname=firstname, lastname=lastname, email=email, address=address,
                        lat=lat, lng=lng))
             db.session.commit()
-            return generate_response(200, "There were no possible agency. But new one was created and connected to broker.")
+            return generate_response(200, "There was not any associated agency. A new one was created and connected to the broker.")
         elif (len(possibleAgencies) > 1):  # if more than one agency, then get closest one.
             agencyIndex = getClosestAgency([(agency.lat, agency.lng) for agency in possibleAgencies], (lat, lng))
             assined_agency_id = possibleAgencies[agencyIndex].id
@@ -114,6 +119,7 @@ def listBrokers():
     page = request.args.get("page")
     perpage = request.args.get("per_page")
     ls = None
+    totalCount = Broker.query.count()
     if (page != None and perpage != None):
         ls = Broker.query.offset((int(page) - 1) * int(perpage)).limit(int(perpage)).all()
     else:
@@ -121,7 +127,7 @@ def listBrokers():
 
     if(len(ls)>0):
         resp=[*map(brokerSerializer, ls)]
-        return jsonify({"data":resp,"total":len(resp)})
+        return jsonify({"data":resp,"total": totalCount})
     else:
         return generate_response("400", " Invalid Payload ")
 
@@ -134,6 +140,7 @@ def listWhiteList():
     page = request.args.get("page")
     perpage = request.args.get("per_page")
     ls = None
+    totalCount = Agency_Domain_WhiteList.query.count()
     if (page != None and perpage != None):
         ls = Agency_Domain_WhiteList.query.offset((int(page) - 1) * int(perpage)).limit(int(perpage)).all()
     else:
@@ -141,7 +148,7 @@ def listWhiteList():
 
     if(len(ls)>0):
         resp=[*map(whiteListSerializer, ls)]
-        return jsonify({"data":resp,"total":len(resp)})
+        return jsonify({"data":resp,"total":totalCount})
     else:
         return generate_response("400", " Invalid Payload ")
 
@@ -154,6 +161,7 @@ def listBlackList():
     page = request.args.get("page")
     perpage = request.args.get("per_page")
     ls = None
+    totalCount = BlackListBrokers.query.count()
     if (page != None and perpage != None):
         ls = BlackListBrokers.query.offset((int(page) - 1) * int(perpage)).limit(int(perpage)).all()
     else:
@@ -161,7 +169,7 @@ def listBlackList():
 
     if(len(ls)>0):
         resp=[*map(blackListSerializer, ls)]
-        return jsonify({"data":resp,"total":len(resp)})
+        return jsonify({"data":resp,"total":totalCount})
     else:
         return generate_response("400", " Invalid Payload ")
 
@@ -174,6 +182,7 @@ def listAgencies():
     page = request.args.get("page")
     perpage = request.args.get("per_page")
     ls=None
+    totalCount = Agency.query.count()
     if(page != None and perpage !=None):
         ls = Agency.query.offset((int(page)-1)*int(perpage)).limit(int(perpage)).all()
     else:
@@ -181,7 +190,7 @@ def listAgencies():
 
     if(len(ls)>0):
         resp=[*map(agencySerializer, ls)]
-        return jsonify({"data":resp,"total":len(resp)})
+        return jsonify({"data":resp,"total":totalCount})
     else:
         return generate_response("400", " Invalid Payload ")
 

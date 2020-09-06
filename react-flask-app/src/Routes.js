@@ -7,14 +7,16 @@ import {
 } from "react-router-dom";
 
 // import files
-import BrokerListing from "./Pages/BrokerListing/BrokerListing";
+import BrokerList from "./Pages/BrokerList/BrokerList";
 import NotFound from "./Pages/NotFound/NotFound";
-import Main from "./Pages/Main/Main"
-import AddBroker from "./Pages/AddBroker/AddBroker";
-import WhiteList from "./Pages/WhiteListListing/WhiteListListing";
-import AgencyListing from "./Pages/AgencyListing/AgencyListing";
+import HomePage from "./Pages/HomePage/HomePage"
+import AddBroker from "./Pages/BrokerAdd/BrokerAdd";
+import WhiteList from "./Pages/AgencyWhiteList/AgencyWhiteList";
+import AgencyList from "./Pages/AgencyList/AgencyList";
 import AdminLogin from "./Pages/AdminLogin/AdminLogin";
-import BlacklistBrokerListing from "./Pages/BlacklistBrokerListing/BlacklistBrokerListing";
+import BrokerBlackList from "./Pages/BrokerBlackList/BrokerBlackList";
+import BrokerAdd from "./Pages/BrokerAdd/BrokerAdd";
+import AgencyWhiteList from "./Pages/AgencyWhiteList/AgencyWhiteList";
 // define routes
 
 /**
@@ -25,27 +27,26 @@ const Routes = (props) => (
     <Router {...props}>
         <Switch>
             <Route path="/broker/add">
-                <AddBroker/>
+                <BrokerAdd/>
             </Route>
             <Route path="/admin/login">
                 <AdminLogin/>
             </Route>
             <Route path="/admin/agency/whitelist">
-                <WhiteList/>
+                <AgencyWhiteList/>
             </Route>
             <Route path="/admin/agency/list">
-                <AgencyListing/>
+                <AgencyList/>
             </Route>
             <Route path="/admin/broker/list">
-                <BrokerListing/>
+                <BrokerList/>
             </Route>
-
-            <Route path="/admin/broker/blacklisted">
-                <BlacklistBrokerListing/>
+            <Route path="/admin/broker/blacklist">
+                <BrokerBlackList/>
             </Route>
 
             <Route exact path="/">
-                <Main/>
+                <HomePage/>
             </Route>
             <Route path="*">
                 <NotFound/>

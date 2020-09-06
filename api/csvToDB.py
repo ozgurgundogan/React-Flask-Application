@@ -1,13 +1,7 @@
 import csv,os
 from api.models import db,Agency,Agency_Domain_WhiteList,Broker
-import googlemaps
-import random
-from math import sin, cos, sqrt, atan2, radians
+from api.utils import getGeocoding
 
-def getGeocoding(address):
-    gmaps = googlemaps.Client(key='AIzaSyCEctx0RhWzg4dC46MJuSjmaJR7IYFVQP0')
-    geocode_result = gmaps.geocode(address)
-    return float(geocode_result[0]["geometry"]["location"]["lat"]),float(geocode_result[0]["geometry"]["location"]["lng"])
 
 
 def get_or_create(session, model, defaults=None, **kwargs):
@@ -23,31 +17,6 @@ def get_or_create(session, model, defaults=None, **kwargs):
         session.commit()
         print(instance)
         return instance, True
-
-# it calculates the distance between two lat long
-def getDistance(el1,el2):
-
-    # approximate radius of earth in km
-    R = 6373.0
-
-    lat1 = radians(el1[0])
-    lon1 = radians(el1[1])
-    lat2 = radians(el2[0])
-    lon2 = radians(el2[1])
-
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
-
-    a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
-    c = 2 * atan2(sqrt(a), sqrt(1 - a))
-
-    distance = R * c
-    return distance
-
-# it returns closest agency index
-def getClosestAgency(list,coordinates):
-    distances = [getDistance(el,coordinates) for el in list]
-    return distances.index(min(distances))
 
 
 def loadCsvFilesIntoDatabase(app):

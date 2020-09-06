@@ -23,11 +23,6 @@ class NavigatorMenu extends React.Component {
                             <a className="nav-link" href="/">Home</a>
                         </li>
                         }
-                        {!this.props.adminloggedin &&
-                        <li className={this.props.brokers ? "nav-item active" : "nav-item"}>
-                            <a className="nav-link" href="/broker/add">Brokers</a>
-                        </li>
-                        }
 
                         {!this.props.adminloggedin &&
                         <li className={this.props.admin ? "nav-item active" : "nav-item"}>
@@ -38,7 +33,7 @@ class NavigatorMenu extends React.Component {
                         {
                             this.props.adminloggedin &&
                             <li className={this.props.brokerlist ? "nav-item active" : "nav-item"}>
-                                <a className="nav-link" href="/admin/broker/list">Broker List</a>
+                                <a className="nav-link" href="/admin/broker/list">Brokers</a>
                             </li>
                         }
 
@@ -46,7 +41,7 @@ class NavigatorMenu extends React.Component {
                         {
                             this.props.adminloggedin &&
                             <li className={this.props.agencylist ? "nav-item active" : "nav-item"}>
-                                <a className="nav-link" href="/admin/agency/list">Agency List</a>
+                                <a className="nav-link" href="/admin/agency/list">Agencies</a>
                             </li>
                         }
                         {
@@ -60,7 +55,7 @@ class NavigatorMenu extends React.Component {
                         {
                             this.props.adminloggedin &&
                             <li className={this.props.blackbrokerlist ? "nav-item active" : "nav-item"}>
-                                <a className="nav-link" href="/admin/broker/blacklisted">Broker Black List</a>
+                                <a className="nav-link" href="/admin/broker/blacklist">Broker Black List</a>
                             </li>
                         }
 

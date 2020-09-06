@@ -1,5 +1,5 @@
 import React from "react";
-import "./AgencyListing.css"
+import "./AgencyList.css"
 import DataTable from 'react-data-table-component';
 import NavigatorMenu from "../NavigatorMenu/NavigatorMenu";
 /**
@@ -36,7 +36,7 @@ const columns = [
         sortable: true,
         grow: 2
       },{
-        name: "Registered Date",
+        name: "Registration Date",
         selector: "timestamp",
         sortable: true,
         grow: 3
@@ -47,7 +47,7 @@ const columns = [
 *  Agency Listing class with pagination.
  *
 * */
-class AgencyListing extends React.Component{
+class AgencyList extends React.Component{
 
     state = {
         data: [],
@@ -131,7 +131,7 @@ class AgencyListing extends React.Component{
                 <div className="Tabling">
                   <div className="card">
                     <DataTable
-                      title="AGENCY LIST"
+                      title="AGENCIES"
                       columns={columns}
                       data={data}
                       progressPending={loading}
@@ -151,4 +151,4 @@ class AgencyListing extends React.Component{
 }
 
 
-export default AgencyListing;
+export default AgencyList;

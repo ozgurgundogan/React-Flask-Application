@@ -1,5 +1,5 @@
 import React from "react";
-import "./Broker.css"
+import "./BrokerList.css"
 import DataTable from 'react-data-table-component';
 import NavigatorMenu from "../NavigatorMenu/NavigatorMenu";
 
@@ -41,7 +41,7 @@ const columns = [
         sortable: true,
         grow: 3
     }, {
-        name: "Registered Date",
+        name: "Registration Date",
         selector: "timestamp",
         sortable: true,
         grow: 2
@@ -52,7 +52,7 @@ const columns = [
  *  Broker Listing class with pagination.
  *
  * */
-class BrokerListing extends React.Component {
+class BrokerList extends React.Component {
 
     state = {
         data: [],
@@ -135,7 +135,7 @@ class BrokerListing extends React.Component {
             <div className="Tabling">
                 <div className="card">
                     <DataTable
-                        title="BROKER LIST"
+                        title="BROKERS"
                         columns={columns}
                         data={data}
                         progressPending={loading}
@@ -157,4 +157,4 @@ class BrokerListing extends React.Component {
 }
 
 
-export default BrokerListing;
+export default BrokerList;
