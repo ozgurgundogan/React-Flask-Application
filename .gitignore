@@ -2,4 +2,6 @@ venv
 __pycache__
 ./react-flask-app/node_modules
 ./api/*.db
-
+install.sh
+runner.sh
+tree.txt
