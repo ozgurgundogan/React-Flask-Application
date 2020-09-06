@@ -1,8 +1,9 @@
-import React from "react";import {
-  Route,
-  BrowserRouter as Router,
-  Switch,
-  Redirect,
+import React from "react";
+import {
+    Route,
+    BrowserRouter as Router,
+    Switch,
+    Redirect,
 } from "react-router-dom";
 
 // import files
@@ -17,40 +18,40 @@ import BlacklistBrokerListing from "./Pages/BlacklistBrokerListing/BlacklistBrok
 // define routes
 
 /**
-*  It defines all possible routes.
-* */
+ *  It defines all possible routes.
+ * */
 
 const Routes = (props) => (
-  <Router {...props}>
-    <Switch>
-      <Route path="/broker/add">
-        <AddBroker />
-      </Route>
-      <Route path="/admin/login">
-        <AdminLogin />
-      </Route>
-      <Route path="/admin/agency/whitelist">
-        <WhiteList />
-      </Route>
-      <Route path="/admin/agency/list">
-        <AgencyListing />
-      </Route>
-      <Route path="/admin/broker/list">
-          <BrokerListing />
-      </Route>
+    <Router {...props}>
+        <Switch>
+            <Route path="/broker/add">
+                <AddBroker/>
+            </Route>
+            <Route path="/admin/login">
+                <AdminLogin/>
+            </Route>
+            <Route path="/admin/agency/whitelist">
+                <WhiteList/>
+            </Route>
+            <Route path="/admin/agency/list">
+                <AgencyListing/>
+            </Route>
+            <Route path="/admin/broker/list">
+                <BrokerListing/>
+            </Route>
 
-      <Route path="/admin/broker/blacklisted">
-          <BlacklistBrokerListing />
-      </Route>
+            <Route path="/admin/broker/blacklisted">
+                <BlacklistBrokerListing/>
+            </Route>
 
-      <Route exact path="/">
-        <Main />
-      </Route>
-      <Route path="*">
-        <NotFound />
-      </Route>
-    </Switch>
-  </Router>
+            <Route exact path="/">
+                <Main/>
+            </Route>
+            <Route path="*">
+                <NotFound/>
+            </Route>
+        </Switch>
+    </Router>
 );
 
 export default Routes;

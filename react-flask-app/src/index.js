@@ -7,6 +7,6 @@ import Routes from "./Routes";
 //import bootstrap
 import "bootstrap/dist/css/bootstrap.css";
 
-ReactDOM.render(<Routes />, document.getElementById("root"));
+ReactDOM.render(<Routes/>, document.getElementById("root"));
 
 serviceWorker.unregister();
