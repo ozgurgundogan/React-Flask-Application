@@ -15,5 +15,5 @@ yarn install --force
 cd ../api
 python3 -m venv react-flask-venv
 . ./react-flask-venv/bin/activate
-pip3 install -y -r requirements.txt
+pip3 install -r requirements.txt
 deactivate
