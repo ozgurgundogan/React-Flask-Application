@@ -21,7 +21,7 @@ sudo apt-get install python3-pip
 sudo apt-get install python3-venv
 
 # for macos you can use Homebrew.
-curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 brew install python3
 pip3 install virtualenv
 ```
