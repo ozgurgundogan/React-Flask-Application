@@ -1,4 +1,3 @@
-# react-flask-app
 ## Project File Structure
 ```bash
 .
