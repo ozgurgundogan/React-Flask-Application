@@ -5,9 +5,6 @@ import random
 from math import sin, cos, sqrt, atan2, radians
 
 def getGeocoding(address):
-    #from random import uniform
-    #x, y = uniform(-180, 180), uniform(-90, 90)
-    #return x, y
     gmaps = googlemaps.Client(key='AIzaSyCEctx0RhWzg4dC46MJuSjmaJR7IYFVQP0')
     geocode_result = gmaps.geocode(address)
     return float(geocode_result[0]["geometry"]["location"]["lat"]),float(geocode_result[0]["geometry"]["location"]["lng"])

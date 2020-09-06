@@ -18,7 +18,7 @@ with app.app_context():
     db.create_all()
 
 
-#loadCsvFilesIntoDatabase(app)
+loadCsvFilesIntoDatabase(app)
 
 """
 it creates database and schemas.
@@ -86,14 +86,12 @@ def AddBroker():
             return generate_response(200,"Broker is added succsessfully and connected to agency that located in \"" + possibleAgencies[agencyIndex].address + "\"")
         else: # choose the only available agency.
             assined_agency_id = possibleAgencies[0].id
-            db.session.add(
-                Broker(agencyId=assined_agency_id, firstname=firstname, lastname=lastname, email=email, address=address,
-                       lat=lat, lng=lng))
+            db.session.add(Broker(agencyId=assined_agency_id, firstname=firstname, lastname=lastname, email=email, address=address,lat=lat, lng=lng))
             db.session.commit()
             return generate_response(200,"Broker is added succsessfully and connected to single available agency that located in \"" + possibleAgencies[0].address + "\"")
+
     else: # broker's email domain address not in whitelist. Still, do not lose this information and save in blacklistbroker table.
-        db.session.add(BlackListBrokers(domain=email_domain, firstname=firstname, lastname=lastname, email=email, address=address,
-                                        lat=lat, lng=lng))
+        db.session.add(BlackListBrokers(domain=email_domain, firstname=firstname, lastname=lastname, email=email, address=address,lat=lat, lng=lng))
         db.session.commit()
         return generate_response(400, "Broker can not be added. Only white listed agencies can register.")
 

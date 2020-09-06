@@ -23,7 +23,9 @@ class Agency(db.Model):
     lng = db.Column(db.Float)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow())
 
-"""
+""    #from random import uniform
+    #x, y = uniform(-180, 180), uniform(-90, 90)
+    #return x, y"
 Broker Table Structure
 """
 class Broker(db.Model):
