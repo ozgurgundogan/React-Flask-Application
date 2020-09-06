@@ -15,10 +15,15 @@ sudo npm install -g yarn
 
 
 ```bash
-## PLEASE NOTE THAT PIP and VIRTUALENV IS GOING TO INSTALLED IN GLOBAL PATH.
-# make sure pip and virtual enviroment installed
+## PLEASE MAKE SURE PIP and VIRTUALENV IS GOING TO INSTALLED IN GLOBAL PATH.
+# for ubuntu you can use the commands below
 sudo apt-get install python3-pip
 sudo apt-get install python3-venv
+
+# for macos you can use Homebrew.
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+brew install python3
+pip3 install virtualenv
 ```
 
 
