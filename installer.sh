@@ -1,3 +1,5 @@
+sudo apt-get -y udpdate
+sudo apt-get -y upgrade
 sudo apt-get -y install nodejs
 sudo apt-get -y install npm
 sudo npm cache clean -f
