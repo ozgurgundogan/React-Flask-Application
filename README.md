@@ -41,3 +41,7 @@ yarn start
 ```
 
 If you do not have any errors in your terminal, a new webpage is going to pop up and directs you to frontend address.
+
+## Note
+
+To be able to login into admin panel, password is required. Password is "admin".
