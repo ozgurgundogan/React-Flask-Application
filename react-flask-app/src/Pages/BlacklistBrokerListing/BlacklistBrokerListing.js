@@ -55,9 +55,7 @@ const columns = [
 * */
 
 class BlacklistBrokerListing extends React.Component{
-    constructor(props) {
-        super(props);
-    }
+
     state = {
         data: [],
         loading: false,

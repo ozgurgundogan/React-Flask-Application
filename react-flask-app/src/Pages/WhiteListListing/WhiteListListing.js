@@ -27,10 +27,6 @@ const columns = [
  *
 * */
 class WhiteList extends React.Component{
-    constructor(props) {
-        super(props);
-
-    }
 
     state = {
         data: [],

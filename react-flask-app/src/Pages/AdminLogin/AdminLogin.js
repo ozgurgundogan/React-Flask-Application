@@ -34,7 +34,7 @@ const AdminLogin = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            const hasError = "error" in data && data.error != false;
+            const hasError = "error" in data && data.error !== false;
             setMessage({
               data: data.message,
               type: hasError ? "alert-danger" : "alert-success",

@@ -14,7 +14,6 @@ import NavigatorMenu from "../NavigatorMenu/NavigatorMenu";
 const AddBroker = () => {
     const { register, handleSubmit, errors } = useForm();
     const [message, setMessage] = useState();
-    const history = useHistory();
 
     const onSubmit = (data, e) => {
         setMessage({
@@ -31,7 +30,7 @@ const AddBroker = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            const hasError = "error" in data && data.error != false;
+            const hasError = "error" in data && data.error !== false;
             setMessage({
               data: data.message,
               type: hasError ? "alert-danger" : "alert-success",

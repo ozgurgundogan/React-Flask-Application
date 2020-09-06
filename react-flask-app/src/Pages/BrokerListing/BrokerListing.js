@@ -53,10 +53,6 @@ const columns = [
  *
 * */
 class BrokerListing extends React.Component{
-    constructor(props) {
-        super(props);
-
-    }
 
     state = {
         data: [],

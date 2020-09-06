@@ -48,9 +48,6 @@ const columns = [
  *
 * */
 class AgencyListing extends React.Component{
-    constructor(props) {
-        super(props);
-    }
 
     state = {
         data: [],
