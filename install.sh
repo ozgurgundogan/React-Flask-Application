@@ -9,7 +9,7 @@ nodejs -v
 
 # install yarn
 npm install -g yarn
-
+npm i react-context-hook
 
 # backend side
 
@@ -18,4 +18,3 @@ pip3 install google-api-python-client
 pip3 install googlemaps
 
 
-npm i react-context-hook
