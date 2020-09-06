@@ -6,15 +6,10 @@ sudo apt update
 ```bash
 ## PLEASE NOTE THAT NODEJS IS GOING TO INSTALLED IN GLOBAL PATH.
 # install nodejs
-sudo apt install nodejs
-sudo apt install npm
-sudo npm cache clean -f
-sudo npm install -g n
-sudo n stable
-# This project is currently build with nodejs v8.10.0
-nodejs -v
-# This project is currently build with node v12.18.13
-node -v
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+nvm install 12.18.13 --reinstall-packages-from=6.13.4
+nvm use 12.18.13
 sudo npm install -g yarn
 ```
 
