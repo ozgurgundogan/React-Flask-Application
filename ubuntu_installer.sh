@@ -1,8 +1,8 @@
 
 # install nodejs required version and install yarn
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
-nvm install 12.18.13 --reinstall-packages-from=6.13.4
-nvm use 12.18.13
+nvm install 12.18.3 --reinstall-packages-from=6.13.4
+nvm use 12.18.3
 sudo npm install -g yarn
 
 # be sure pip3 and venv installed
